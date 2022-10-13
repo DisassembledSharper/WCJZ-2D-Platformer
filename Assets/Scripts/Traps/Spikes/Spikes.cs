@@ -1,7 +1,5 @@
-using Actors.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Actors.Player;
 
 namespace Traps
 {
@@ -11,7 +9,7 @@ namespace Traps
         {
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PlayerHealth>().Hit();
+                collision.GetComponent<PlayerHealth>().TakeDamage(1);
             }
         }
     }

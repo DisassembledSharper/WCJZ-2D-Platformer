@@ -1,35 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Actors.BaseClasses.Health;
 
 namespace Actors.Player
 {
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : HealthSystem
     {
         [Header("References")]
         [SerializeField] private Player player;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
-        [Header("Status")]
-        [SerializeField] private int currentHealth;
-        [SerializeField] private bool isRecovering;
-
         private void Start()
         {
-            currentHealth = player.StartHealth;
+            currentHealth = startHealth;
+            canTakeDamage = true;
         }
 
-        public void Hit()
+        protected override void OnTakeDamage()
         {
-            if (isRecovering) return;
-            currentHealth--;
-            StartCoroutine(Flick(0.05f));
+            StartCoroutine(Recovery(0.05f));
         }
 
-        private IEnumerator Flick(float delay)
+        private IEnumerator Recovery(float delay)
         {
             Color color = spriteRenderer.color;
-            isRecovering = true;
+            canTakeDamage = false;
             for (int i = 0; i < 10; i++)
             {
                 color.a = 0;
@@ -39,7 +35,7 @@ namespace Actors.Player
                 spriteRenderer.color = color;
                 yield return new WaitForSeconds(delay);
             }
-            isRecovering = false;
+            canTakeDamage = true;
         }
     }
 }
