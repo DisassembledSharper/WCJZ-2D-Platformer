@@ -6,11 +6,13 @@ namespace Actors.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Player player;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private int currentHealth;
 
-        private bool isRecovering;
+        [Header("Status")]
+        [SerializeField] private int currentHealth;
+        [SerializeField] private bool isRecovering;
 
         private void Start()
         {

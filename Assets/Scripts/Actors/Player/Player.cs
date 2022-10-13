@@ -6,25 +6,23 @@ namespace Actors.Player
 {
     public class Player : MonoBehaviour
     {
+        [Header("Properties")]
         [SerializeField] private float walkSpeed;
         [SerializeField] private float jumpForce;
         [SerializeField] private int startHealth;
 
+        [Header("References")]
         [SerializeField] private Rigidbody2D rig;
 
-        private Vector2 direction = new();
-        private bool isOnGround;
-        private bool isWalking;
-        private bool isJumping;
+        [Header("Status")]
+        [SerializeField] private Vector2 direction = new();
+        [SerializeField] private bool isOnGround;
+        [SerializeField] private bool isWalking;
+        [SerializeField] private bool isJumping;
 
         public bool IsWalking { get => isWalking; private set => isWalking = value; }
         public bool IsJumping { get => isJumping; private set => isJumping = value; }
         public int StartHealth { get => startHealth; private set => startHealth = value; }
-
-        private void Start()
-        {
-            
-        }
 
         private void Update()
         {

@@ -6,6 +6,7 @@ namespace Actors.Player
 {
     public class PlayerAnimationsController : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Player player;
         [SerializeField] private Animator animator;
 
