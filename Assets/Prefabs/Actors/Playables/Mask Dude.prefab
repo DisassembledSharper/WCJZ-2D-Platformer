@@ -31,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9162942224599659307}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.57, y: 2.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -146,8 +146,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.068644285, y: -0.04412818}
-  m_Size: {x: 0.7777238, y: 0.8921304}
+  m_Offset: {x: 0.04347682, y: -0.18866396}
+  m_Size: {x: 1.3146214, y: 1.603693}
   m_Direction: 0
 --- !u!114 &9162942224599659280
 MonoBehaviour:
@@ -214,8 +214,13 @@ MonoBehaviour:
   jumpForce: 12
   rig: {fileID: 9162942224599659311}
   groundDetector: {fileID: 9162942224657306593}
+  animationsController: {fileID: 9162942224599659280}
   isJumping: 0
   jumpRequest: 0
+  doubleJumpRequest: 0
+  canDoubleJump: 0
+  isDoubleJumping: 0
+  isFalling: 0
   isOnGround: 0
 --- !u!1 &9162942224657306623
 GameObject:
@@ -242,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9162942224657306623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.295, z: 0}
+  m_LocalPosition: {x: 0.063, y: -0.596, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4a7cbb9038b064db0e6b2b3f48d622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectorRadius: 0.23
+  detectorRadius: 0.51
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
