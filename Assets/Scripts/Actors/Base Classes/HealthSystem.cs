@@ -5,19 +5,26 @@ namespace Actors.BaseClasses.Health
     public class HealthSystem : MonoBehaviour
     {
         [Header("Config")]
-        protected int startHealth = 3;
+        [SerializeField] protected int startHealth = 3;
 
         [Header("Status")]
         [SerializeField] protected int currentHealth;
         [SerializeField] protected bool canTakeDamage = true;
-        
+        [SerializeField] protected bool isDead = false;
+
         public void TakeDamage(int damageValue)
         {
-            if (!canTakeDamage) return;
+            if (!canTakeDamage || isDead) return;
             currentHealth -= damageValue;
             OnTakeDamage();
+            if (currentHealth <= 0)
+            {
+                isDead = true;
+                OnDie();
+            }
         }
 
         protected virtual void OnTakeDamage() { }
+        protected virtual void OnDie() { }
     }
 }

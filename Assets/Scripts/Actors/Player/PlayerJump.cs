@@ -14,6 +14,7 @@ namespace Actors.Player
 
         [Header("Status")]
         [SerializeField] private bool isJumping;
+        [SerializeField] private bool jumpRequest;
         [SerializeField] private bool isOnGround;
 
         public bool IsJumping { get => isJumping; private set => isJumping = value; }
@@ -21,14 +22,18 @@ namespace Actors.Player
 
         private void Update()
         {
-            isOnGround = groundDetector.IsOnGround;
+            if (Input.GetButtonDown("Jump") && isOnGround) jumpRequest = true; 
+        }
 
-            if (Input.GetButtonDown("Jump") && isOnGround)
+        private void FixedUpdate()
+        {
+            isOnGround = groundDetector.IsOnGround;
+            if (jumpRequest)
             {
                 rig.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                jumpRequest = false;
                 IsJumping = true;
             }
-
             if (isOnGround && rig.velocity.y <= 0) isJumping = false;
         }
     }
