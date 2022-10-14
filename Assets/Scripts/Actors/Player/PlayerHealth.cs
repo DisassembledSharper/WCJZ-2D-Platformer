@@ -8,7 +8,6 @@ namespace Actors.Player
     public class PlayerHealth : HealthSystem
     {
         [Header("References")]
-        [SerializeField] private Player player;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         private void Start()
