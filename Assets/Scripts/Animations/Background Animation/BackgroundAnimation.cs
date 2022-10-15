@@ -9,8 +9,9 @@ namespace Animations.BackgroundAnimation
     {
         [Header("Config")]
         [SerializeField] private float speed;
-
+        [Header("References")]
         [SerializeField] private Tilemap tilemap;
+
         private void Update()
         {
             tilemap.tileAnchor -= new Vector3(0, speed * Time.deltaTime, 0);

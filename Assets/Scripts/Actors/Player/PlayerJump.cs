@@ -56,7 +56,7 @@ namespace Actors.Player
             if (rig.velocity.y <= 0 && isJumping) isFalling = true;
             else isFalling = false;
 
-            if (isOnGround && rig.velocity.y <= 0)
+            if (isOnGround && rig.velocity.y <= 1.5f)
             {
                 isJumping = false;
                 canDoubleJump = false;
