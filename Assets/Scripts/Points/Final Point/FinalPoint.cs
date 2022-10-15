@@ -14,7 +14,9 @@ namespace Points
         [Header("References")]
         [SerializeField] private Animator animator;
         [SerializeField] private ParticleSystem confetti;
+        [SerializeField] private SpriteRenderer finalSpriteRenderer;
         private Rigidbody2D playerRig;
+
         [Header("Status")]
         [SerializeField] private bool wasPressed;
 
@@ -24,12 +26,15 @@ namespace Points
             {
                 if (wasPressed) return;
                 wasPressed = true;
+
                 playerRig = collision.GetComponent<Rigidbody2D>();
                 collision.GetComponent<PlayerJump>().FreezeInput = true;
                 collision.GetComponent<PlayerMovement>().FreezeInput = true;
+
                 animator.SetTrigger("press");
+
                 Invoke(nameof(LaunchPlayer), 0.3f);
-                //Invoke(nameof(LoadNextScene), 2);
+                Invoke(nameof(LoadNextScene), 3);
             }
         }
 
@@ -41,8 +46,13 @@ namespace Points
         private void LaunchPlayer()
         {
             confetti.Play();
+            Invoke(nameof(ChangeLayer), 1);
             playerRig.velocity = new Vector2(playerRig.velocity.x, 0);
             playerRig.AddForce(launchForce * Vector2.up, ForceMode2D.Impulse);
+        }
+        private void ChangeLayer()
+        {
+            finalSpriteRenderer.sortingOrder -= 2;
         }
     }
 }
