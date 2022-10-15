@@ -1,6 +1,8 @@
+using Actors.Player.Jump;
+using Actors.Player.Movement;
 using UnityEngine;
 
-namespace Actors.Player
+namespace Actors.Player.AnimationsController
 {
     public class PlayerAnimationsController : MonoBehaviour
     {

@@ -1,7 +1,8 @@
-using UnityEngine;
 using Actors.Other;
+using Actors.Player.AnimationsController;
+using UnityEngine;
 
-namespace Actors.Player
+namespace Actors.Player.Jump
 {
     public class PlayerJump : MonoBehaviour
     {
@@ -21,16 +22,26 @@ namespace Actors.Player
         [SerializeField] private bool isDoubleJumping;
         [SerializeField] private bool isFalling;
         [SerializeField] private bool isOnGround;
+        [SerializeField] private bool freezeInput;
 
         public bool IsJumping { get => isJumping; private set => isJumping = value; }
         public bool IsOnGround { get => isOnGround; private set => isOnGround = value; }
         public bool IsFalling { get => isFalling; private set => isFalling = value; }
         public bool IsDoubleJumping { get => isDoubleJumping; private set => isDoubleJumping = value; }
+        public bool FreezeInput { get => freezeInput; set => freezeInput = value; }
 
         private void Update()
         {
-            if (Input.GetButtonDown("Jump") && isOnGround) jumpRequest = true;
-            if (Input.GetButtonDown("Jump") && canDoubleJump) doubleJumpRequest = true;
+            if (!freezeInput)
+            {
+                if (Input.GetButtonDown("Jump") && isOnGround) jumpRequest = true;
+                if (Input.GetButtonDown("Jump") && canDoubleJump) doubleJumpRequest = true;
+            }
+            else
+            {
+                jumpRequest = false;
+                doubleJumpRequest = false;
+            }
         }
 
         private void FixedUpdate()
@@ -53,8 +64,7 @@ namespace Actors.Player
                 animationsController.SetAnimationTrigger("doubleJump");
             }
 
-            if (rig.velocity.y <= 0 && isJumping) isFalling = true;
-            else isFalling = false;
+            isFalling = rig.velocity.y <= 0 && isJumping;
 
             if (isOnGround && rig.velocity.y <= 1.5f)
             {

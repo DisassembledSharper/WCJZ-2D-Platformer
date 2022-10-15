@@ -1,5 +1,5 @@
 using UnityEngine;
-using Actors.Player;
+using Actors.Player.Health;
 
 namespace Traps
 {

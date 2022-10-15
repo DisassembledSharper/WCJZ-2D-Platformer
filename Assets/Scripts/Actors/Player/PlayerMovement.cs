@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Actors.Player
+namespace Actors.Player.Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -12,14 +12,17 @@ namespace Actors.Player
 
         [Header("Status")]
         [SerializeField] private float horizontalInput;
+        [SerializeField] private bool freezeInput;
         [SerializeField] private bool isWalking;
 
         public bool IsWalking { get => isWalking; private set => isWalking = value; }
         public float HorizontalInput { get => horizontalInput; private set => horizontalInput = value; }
+        public bool FreezeInput { get => freezeInput; set => freezeInput = value; }
 
         private void Update()
         {
-            horizontalInput = Input.GetAxisRaw("Horizontal");
+            if (!freezeInput) horizontalInput = Input.GetAxisRaw("Horizontal");
+            else horizontalInput = 0;
         }
 
         private void FixedUpdate()
