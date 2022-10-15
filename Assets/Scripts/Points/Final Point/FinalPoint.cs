@@ -1,5 +1,7 @@
-using UnityEngine;
+using Actors.Player.Jump;
+using Actors.Player.Movement;
 using Managers.ScenesManager;
+using UnityEngine;
 
 namespace Points
 {
@@ -23,6 +25,8 @@ namespace Points
                 if (wasPressed) return;
                 wasPressed = true;
                 playerRig = collision.GetComponent<Rigidbody2D>();
+                collision.GetComponent<PlayerJump>().FreezeInput = true;
+                collision.GetComponent<PlayerMovement>().FreezeInput = true;
                 animator.SetTrigger("press");
                 Invoke(nameof(LaunchPlayer), 0.3f);
                 //Invoke(nameof(LoadNextScene), 2);
