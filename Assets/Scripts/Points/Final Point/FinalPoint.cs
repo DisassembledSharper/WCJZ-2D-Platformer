@@ -21,6 +21,7 @@ namespace Points
         {
             if (collision.CompareTag("Player"))
             {
+                if (wasPressed) return;
                 wasPressed = true;
                 playerRig = collision.GetComponent<Rigidbody2D>();
                 animator.SetTrigger("press");
