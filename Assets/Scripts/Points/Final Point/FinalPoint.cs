@@ -11,6 +11,7 @@ namespace Points
 
         [Header("References")]
         [SerializeField] private Animator animator;
+        [SerializeField] private ParticleSystem confetti;
         private Rigidbody2D playerRig;
         [Header("Status")]
         [SerializeField] private bool wasPressed;
@@ -35,6 +36,7 @@ namespace Points
 
         private void LaunchPlayer()
         {
+            confetti.Play();
             playerRig.velocity = new Vector2(playerRig.velocity.x, 0);
             playerRig.AddForce(launchForce * Vector2.up, ForceMode2D.Impulse);
         }

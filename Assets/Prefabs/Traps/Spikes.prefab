@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 9031961156795751863}
   - component: {fileID: 9031961156795751860}
   - component: {fileID: 9031961156795751862}
+  - component: {fileID: 2189366275901301618}
   - component: {fileID: 9031961156795751865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.030461073, y: -0.28091884}
@@ -112,6 +113,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.93907785, y: 0.43816233}
   m_EdgeRadius: 0
+--- !u!70 &2189366275901301618
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031961156795751861}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.034342743, y: -0.04269671}
+  m_Size: {x: 0.9385478, y: 0.023108007}
+  m_Direction: 1
 --- !u!114 &9031961156795751865
 MonoBehaviour:
   m_ObjectHideFlags: 0
