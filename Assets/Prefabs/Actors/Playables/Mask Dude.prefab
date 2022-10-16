@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb9256669f440348b4ba23214f643df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 12
+  jumpForce: 13
   rig: {fileID: 9162942224599659311}
   groundDetector: {fileID: 9162942224657306593}
   animationsController: {fileID: 9162942224599659280}

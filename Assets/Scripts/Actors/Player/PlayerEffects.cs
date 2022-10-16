@@ -24,6 +24,7 @@ namespace Actors.Player.Effects
         }
         public IEnumerator Appear()
         {
+            yield return new WaitForSeconds(0.5f);
             spriteRenderer.enabled = false;
             appearingObject.SetActive(true);
             playerMovement.FreezeInput = true;
