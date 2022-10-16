@@ -24,11 +24,11 @@ namespace Actors.Player.Effects
         }
         public IEnumerator Appear()
         {
-            yield return new WaitForSeconds(0.5f);
             spriteRenderer.enabled = false;
-            appearingObject.SetActive(true);
             playerMovement.FreezeInput = true;
             playerJump.FreezeInput = true;
+            yield return new WaitForSeconds(0.5f);
+            appearingObject.SetActive(true);
             yield return new WaitForSeconds(appearingDuration);
             playerMovement.FreezeInput = false;
             playerJump.FreezeInput = false;
