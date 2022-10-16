@@ -18,5 +18,10 @@ namespace Managers.ScenesManager
         {
             SceneManager.LoadScene(buildIndex);
         }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }
